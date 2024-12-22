@@ -24,6 +24,12 @@ export class AppComponent {
   createComponent() {
     if (this.vcr) {
       this.#componentRef = this.vcr.createComponent(WidgetComponent);
+      this.#componentRef.setInput('title', 'weather');
+      this.#componentRef.setInput('description', 'weather in hamilton');
+
+      this.#componentRef.instance.closed.subscribe(() => {
+        this.#componentRef?.destroy();
+      });
     }
   }
 
