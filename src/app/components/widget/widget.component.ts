@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-widget',
-  template: '<p>Widget works!</p>',
-  standalone: true,
+  templateUrl: './widget.component.html',
+  styleUrls: ['./widget.component.scss'],
+  standalone: false,
 })
-export class WidgetComponent {}
+export class WidgetComponent {
+  title = input('__Widget__');
+  description = input('__Widget description__');
+
+  closed = output<void>();
+}

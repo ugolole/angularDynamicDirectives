@@ -1,1 +1,11 @@
 <p>Angular directive app works</p>
+
+<main id="content">
+    <ng-container #container></ng-container>
+
+    <section class="toolbar">
+        <button (click)="createComponent()" class="create"> Create component</button>
+        <button (click)="destroyComponent()" class="destroy">Destroy component </button>
+    </section>
+
+</main>

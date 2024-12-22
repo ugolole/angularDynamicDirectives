@@ -1,12 +1,35 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+  Component,
+  ComponentRef,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { WidgetComponent } from './components/widget/widget.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
 })
 export class AppComponent {
   title = 'angularDynamicDirectives';
+
+  // Reference the container in the template
+  @ViewChild('container', { read: ViewContainerRef, static: true })
+  vcr!: ViewContainerRef;
+
+  #componentRef?: ComponentRef<WidgetComponent>;
+
+  createComponent() {
+    if (this.vcr) {
+      this.#componentRef = this.vcr.createComponent(WidgetComponent);
+    }
+  }
+
+  destroyComponent() {
+    if (this.vcr) {
+      this.vcr.clear();
+    }
+  }
 }
