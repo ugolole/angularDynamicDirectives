@@ -1,8 +1,9 @@
+import { NgComponentOutlet } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [],
-  imports: [],
+  imports: [NgComponentOutlet],
   providers: [],
   bootstrap: [],
 })
